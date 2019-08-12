@@ -1,0 +1,1 @@
+Edit > Column Editor > Number to Insert > Set Initial Number and Increase By >OK
