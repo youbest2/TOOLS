@@ -1,0 +1,9 @@
+Enter the below command in Powershel (All at a time)
+
+
+
+New-Item -Path 'D:\temp\Test Folder1' -ItemType Directory
+New-Item -Path 'D:\temp\Test Folder2' -ItemType Directory
+New-Item -Path 'D:\temp\Test Folder3' -ItemType Directory
+New-Item -Path 'D:\temp\Test Folder4' -ItemType Directory
+New-Item -Path 'D:\temp\Test Folder5' -ItemType Directory
