@@ -1,0 +1,9 @@
+Copy paste the below command in powershel (All at a time)
+
+
+New-Item D:\Everything\670B\Input_Output\\Input_Output1.txt
+New-Item D:\Everything\670B\Input_Output\\Input_Output2.txt
+New-Item D:\Everything\670B\Input_Output\\Input_Output3.txt
+New-Item D:\Everything\670B\Input_Output\\Input_Output4.txt
+New-Item D:\Everything\670B\Input_Output\\Input_Output5.txt
+New-Item D:\Everything\670B\Input_Output\\Input_Output6.txt
