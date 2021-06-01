@@ -1,0 +1,6 @@
+Copy past in power shell
+
+New-Item -Path "D:\Everything\BL_xx\Remote_Inspection_Test\UHD_CMP_BL11_1\178D\" -Name "BB82947" -ItemType "directory"
+New-Item -Path "D:\Everything\BL_xx\Remote_Inspection_Test\UHD_CMP_BL11_1\178D\" -Name "BB82948" -ItemType "directory"
+New-Item -Path "D:\Everything\BL_xx\Remote_Inspection_Test\UHD_CMP_BL11_1\178D\" -Name "BB82949" -ItemType "directory"
+New-Item -Path "D:\Everything\BL_xx\Remote_Inspection_Test\UHD_CMP_BL11_1\178D\" -Name "BB83012" -ItemType "directory"
