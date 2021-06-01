@@ -1,0 +1,5 @@
+How to list the directory content in PowerShell?
+PS D:\Temp> Get-ChildItem
+
+Create multiple folder
+New-Item -Path "c:\" -Name "logfiles" -ItemType "directory"
