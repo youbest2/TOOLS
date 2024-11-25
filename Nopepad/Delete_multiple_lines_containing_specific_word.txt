@@ -1,2 +1,0 @@
-Ctrl + F  --> Mark (Find What) --> BookMark Line --> Mark All
-Menu --> Search --> Book Mark --> remove Book Marked Lines
