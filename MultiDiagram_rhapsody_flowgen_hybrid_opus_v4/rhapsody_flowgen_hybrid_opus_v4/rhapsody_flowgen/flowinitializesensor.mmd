@@ -1,0 +1,40 @@
+flowchart TD
+    %% --- Start and init ---
+    A([Start 204F RequestResults]) --> B[Init retVal = E_NOT_OK]
+    B --> C{Pointers valid?}
+
+    %% --- Null pointer guard ---
+    C -- No --> X1[retVal = RTE_E_INVALID]
+    C -- Yes --> D{SPC running or pending?}
+
+    %% --- Sequence guard ---
+    D -- No --> X2[NRC = REQUESTSEQUENCEERROR]
+    D -- Yes --> E{OpStatus?}
+
+    %% --- DCM_INITIAL path ---
+    E -- DCM_INITIAL --> F{Read SPC result OK?}
+    E -- Other states --> Y1[NRC = PROGRAMMINGFAILURE]
+
+    F -- No --> G1[NRC = CONDITIONSNOTCORRECT]
+    F -- Yes --> H{SPC status?}
+
+    %% --- SPC status branches ---
+    H -- Running --> R1[Latch SET, status RUNNING]
+    H -- Passed --> R2[Clear SPCPending, status PASSED]
+    H -- Non-pass --> R3[Latch RESET, status FAILED]
+
+    %% --- Fill response bytes ---
+    R1 --> P[Fill Out_ResData 0..2]
+    R2 --> P
+    R3 --> P
+    P --> POS[NRC = POSITIVE, retVal = E_OK]
+
+    %% --- Reset state on unexpected ---
+    Y1 --> Y2[Latch RESET, status NOT_STARTED]
+
+    %% --- Convergence to return ---
+    X1 --> Z([Return retVal])
+    X2 --> Z
+    G1 --> Z
+    POS --> Z
+    Y2 --> Z

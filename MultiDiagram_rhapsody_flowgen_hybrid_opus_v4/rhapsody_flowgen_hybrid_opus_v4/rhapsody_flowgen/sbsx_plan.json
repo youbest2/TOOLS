@@ -1,0 +1,279 @@
+{
+  "nodes": {
+    "action_1": {
+      "x": 800,
+      "y": 200,
+      "w": 250,
+      "h": 75,
+      "text": "Init retVal = E_NOT_OK"
+    },
+    "condition_2": {
+      "x": 800,
+      "y": 320,
+      "w": 250,
+      "h": 75,
+      "text": "Pointers valid?"
+    },
+    "action_3": {
+      "x": 1060,
+      "y": 440,
+      "w": 250,
+      "h": 75,
+      "text": "retVal = RTE_E_INVALID"
+    },
+    "condition_4": {
+      "x": 800,
+      "y": 440,
+      "w": 250,
+      "h": 75,
+      "text": "SPC running or pending?"
+    },
+    "action_5": {
+      "x": 1060,
+      "y": 560,
+      "w": 250,
+      "h": 75,
+      "text": "NRC = REQUESTSEQUENCEERROR"
+    },
+    "condition_6": {
+      "x": 800,
+      "y": 560,
+      "w": 250,
+      "h": 75,
+      "text": "OpStatus?"
+    },
+    "condition_7": {
+      "x": 800,
+      "y": 680,
+      "w": 250,
+      "h": 75,
+      "text": "Read SPC result OK?"
+    },
+    "action_8": {
+      "x": 1060,
+      "y": 680,
+      "w": 250,
+      "h": 75,
+      "text": "NRC = PROGRAMMINGFAILURE"
+    },
+    "action_9": {
+      "x": 1060,
+      "y": 800,
+      "w": 250,
+      "h": 75,
+      "text": "NRC = CONDITIONSNOTCORRECT"
+    },
+    "condition_10": {
+      "x": 800,
+      "y": 800,
+      "w": 250,
+      "h": 75,
+      "text": "SPC status?"
+    },
+    "action_11": {
+      "x": 800,
+      "y": 920,
+      "w": 250,
+      "h": 75,
+      "text": "Latch SET, status RUNNING"
+    },
+    "action_12": {
+      "x": 1060,
+      "y": 920,
+      "w": 250,
+      "h": 75,
+      "text": "Clear SPCPending, status PASSED"
+    },
+    "action_13": {
+      "x": 540,
+      "y": 920,
+      "w": 250,
+      "h": 75,
+      "text": "Latch RESET, status FAILED"
+    },
+    "action_14": {
+      "x": 800,
+      "y": 1040,
+      "w": 250,
+      "h": 75,
+      "text": "Fill Out_ResData 0..2"
+    },
+    "action_15": {
+      "x": 800,
+      "y": 1160,
+      "w": 250,
+      "h": 75,
+      "text": "NRC = POSITIVE, retVal = E_OK"
+    },
+    "action_16": {
+      "x": 540,
+      "y": 800,
+      "w": 250,
+      "h": 75,
+      "text": "Latch RESET, status NOT_STARTED"
+    },
+    "action_17": {
+      "x": 800,
+      "y": 1280,
+      "w": 250,
+      "h": 75,
+      "text": "Z"
+    }
+  },
+  "edges": [
+    {
+      "from": "action_1",
+      "to": "condition_2",
+      "src_port": "bottom",
+      "dst_port": "top",
+      "label": null
+    },
+    {
+      "from": "condition_2",
+      "to": "action_3",
+      "src_port": "right",
+      "dst_port": "left",
+      "label": "No"
+    },
+    {
+      "from": "condition_2",
+      "to": "condition_4",
+      "src_port": "bottom",
+      "dst_port": "top",
+      "label": "Yes"
+    },
+    {
+      "from": "condition_4",
+      "to": "action_5",
+      "src_port": "right",
+      "dst_port": "left",
+      "label": "No"
+    },
+    {
+      "from": "condition_4",
+      "to": "condition_6",
+      "src_port": "bottom",
+      "dst_port": "top",
+      "label": "Yes"
+    },
+    {
+      "from": "condition_6",
+      "to": "condition_7",
+      "src_port": "bottom",
+      "dst_port": "top",
+      "label": "DCM_INITIAL"
+    },
+    {
+      "from": "condition_6",
+      "to": "action_8",
+      "src_port": "right",
+      "dst_port": "left",
+      "label": "Other states"
+    },
+    {
+      "from": "condition_7",
+      "to": "action_9",
+      "src_port": "right",
+      "dst_port": "left",
+      "label": "No"
+    },
+    {
+      "from": "condition_7",
+      "to": "condition_10",
+      "src_port": "bottom",
+      "dst_port": "top",
+      "label": "Yes"
+    },
+    {
+      "from": "condition_10",
+      "to": "action_11",
+      "src_port": "bottom",
+      "dst_port": "top",
+      "label": "Running"
+    },
+    {
+      "from": "condition_10",
+      "to": "action_12",
+      "src_port": "right",
+      "dst_port": "left",
+      "label": "Passed"
+    },
+    {
+      "from": "condition_10",
+      "to": "action_13",
+      "src_port": "left",
+      "dst_port": "right",
+      "label": "Non-pass"
+    },
+    {
+      "from": "action_11",
+      "to": "action_14",
+      "src_port": "bottom",
+      "dst_port": "top",
+      "label": null
+    },
+    {
+      "from": "action_12",
+      "to": "action_14",
+      "src_port": "bottom",
+      "dst_port": "right",
+      "label": null
+    },
+    {
+      "from": "action_13",
+      "to": "action_14",
+      "src_port": "bottom",
+      "dst_port": "left",
+      "label": null
+    },
+    {
+      "from": "action_14",
+      "to": "action_15",
+      "src_port": "bottom",
+      "dst_port": "top",
+      "label": null
+    },
+    {
+      "from": "action_8",
+      "to": "action_16",
+      "src_port": "bottom",
+      "dst_port": "right",
+      "label": null
+    },
+    {
+      "from": "action_3",
+      "to": "action_17",
+      "src_port": "bottom",
+      "dst_port": "right",
+      "label": null
+    },
+    {
+      "from": "action_5",
+      "to": "action_17",
+      "src_port": "bottom",
+      "dst_port": "right",
+      "label": null
+    },
+    {
+      "from": "action_9",
+      "to": "action_17",
+      "src_port": "bottom",
+      "dst_port": "right",
+      "label": null
+    },
+    {
+      "from": "action_15",
+      "to": "action_17",
+      "src_port": "bottom",
+      "dst_port": "top",
+      "label": null
+    },
+    {
+      "from": "action_16",
+      "to": "action_17",
+      "src_port": "bottom",
+      "dst_port": "left",
+      "label": null
+    }
+  ]
+}
