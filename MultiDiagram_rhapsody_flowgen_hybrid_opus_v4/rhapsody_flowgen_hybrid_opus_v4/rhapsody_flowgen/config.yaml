@@ -1,0 +1,46 @@
+# config.yaml — Rhapsody FlowGen (Opus v4)
+# =========================================
+# Two ways to use this file:
+#   (A) SINGLE diagram  -> `python -m rhapsody_flowgen.main`
+#       Uses the top-level  class / operation / mermaid_file  keys.
+#   (B) MULTIPLE diagrams -> `run_all.bat`  (batch_main + patch_all)
+#       Uses the `diagrams:` list below. Each entry can live in a different
+#       class/operation, and (optionally) a different package.
+#
+# The top-level single keys and the `diagrams:` list can BOTH be present:
+#   - main.py (single) reads the top-level keys.
+#   - batch_main/patch_all (multi) read the `diagrams:` list.
+
+# --- Common ---------------------------------------------------------------
+project_path: "D:\\Sandbox\\Nissan\\Swee500\\SWEET500_Repo\\app-bootloader\\FlashBootloader\\FlashBootloader_SwDD\\FlashBootloader_SwDD.rpyx"
+# rhapsody_path: "C:\\Program Files\\IBM\\Rhapsody\\9.0.1"   # optional
+
+# Default/base package path (used by every diagram unless it overrides).
+package_path:
+  - "50_DetailedDesign"
+  - "50_CMP_Implementation"
+
+# --- (A) SINGLE-diagram keys (used by main.py) ----------------------------
+class: "ADCMonMain"
+operation: "AdcAbs_Get_VBATT_MON"
+mermaid_file: "flowinitializesensor.mmd"
+
+# --- (B) MULTI-diagram list (used by run_all.bat / batch_main / patch_all) -
+# `class`     = the «Unit»/Class that owns the operation.
+# `operation` = the operation whose activity diagram (AD_<operation>) to build.
+# `mermaid_file` = path (relative to this rhapsody_flowgen folder, or absolute).
+# `package_path` (optional) = override the base package for this one diagram.
+# `diagram` (optional) = override the AD name (defaults to "AD_<operation>").
+diagrams:
+  - class: "ADCMonMain"
+    operation: "AdcAbs_Get_VBATT_MON"
+    mermaid_file: "flows/AdcAbs_Get_VBATT_MON.mmd"
+
+  # - class: "ADCMonMain"
+  #   operation: "AdcAbs_GetGroup0ConversionStatus"
+  #   mermaid_file: "flows/AdcAbs_GetGroup0ConversionStatus.mmd"
+
+  # - class: "SomeOtherUnit"
+  #   operation: "DoSomething"
+  #   mermaid_file: "flows/DoSomething.mmd"
+  #   package_path: ["50_DetailedDesign", "50_CMP_Implementation"]
